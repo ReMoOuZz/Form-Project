@@ -1,3 +1,15 @@
+:root {
+  --primary-color: #FF7D29;
+  --secondary-color: #FFBF78;
+  --tertiary-color: #FFEEA9;
+  --text-color: #000000;
+  --background-color: #F7F7F7;
+  --accent-color: rgba(31, 131, 151, 0.767);
+  --shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  --border-radius: 0.2em;
+  --transition-speed: 0.3s;
+}
+
 *,
 *::before,
 *::after {
@@ -93,6 +105,7 @@ ol {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    overflow: hidden;
 }
 
 .right-content  {
@@ -107,11 +120,11 @@ ol {
 .details-container  {
   display: flex;
   align-items: center;
-  min-height: 30%;
+  min-height: 25%;
   width: 100%;
   padding: 2em;
-  background-image: linear-gradient(to bottom, #FF7D29, #FFBF78, #FFEEA9 );
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(to bottom, var(--primary-color), var(--secondary-color), var(--tertiary-color));
+  box-shadow: var(--shadow);
 }
 
 .details-container p {
@@ -150,14 +163,14 @@ ol {
 .form-container section input {
   width: max(60%, 300px);
   border: 1px solid #ccc;
-  border-radius: 0.2em;
+  border-radius: var(--border-radius);
   padding-left: 0.5em;
 }
 
 .form-container section input:focus {
   outline: none;
-  border: 1px solid rgba(31, 131, 151, 0.767);
-  box-shadow: 0 0 0.2em rgba(31, 131, 151, 0.767);
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 0 0.2em var(--accent-color);
 }
 
 .form-container section input[type=password]:invalid {
@@ -165,11 +178,11 @@ ol {
 }
 
 .form-actions {
-  background-color: #F7F7F7;
+  background-color: var(--background-color);
   display: flex;
   gap: 15em;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
-  height: 100%;
+  box-shadow: var(--shadow);
+  min-height: 30%;
 }
 
 .form-button {
@@ -182,16 +195,16 @@ ol {
   width: 150px;
   padding: 0.5em;
   border: none;
-  border-radius: 0.2em;
-  background-color: #FF7D29;
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
   color: white;
   font-weight: bold;
+  transition: transform var(--transition-speed) ease-in-out;
 }
 
 .form-button button:hover {
   transform: scale(1.1);
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
 }
 
 .form-button button:active {
@@ -209,8 +222,8 @@ margin: 1em 0 1em 0.5em;
 }
 
 .log-in {
-color: rgba(31, 131, 151, 0.767);
-text-decoration: underline;
+  color: var(--accent-color);
+  text-decoration: underline;
 }
 
 .log-in:hover {
@@ -381,6 +394,10 @@ text-decoration: underline;
   .form-container section {
     width: 80%;
   }
+
+  .form-actions {
+    gap: 5em;
+  }
 }
 
 @media screen and (min-width: 1025px) {
@@ -391,6 +408,10 @@ text-decoration: underline;
 
   .form-container section {
     width: 60%;
+  }
+
+  .form-actions {
+    gap: 15em;
   }
 }
 
@@ -412,4 +433,18 @@ text-decoration: underline;
   .form-container section {
     padding: 0.5em;
   }
+}
+
+@media screen and (max-height: 795px) {
+  .left-content {
+    display: none;
+  }
+
+  .right-content {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
 }
